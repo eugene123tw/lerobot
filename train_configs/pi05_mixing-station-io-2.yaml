@@ -1,0 +1,27 @@
+dataset:
+  repo_id: rhecker/mixing-station-io-2
+  root: /home/eugene/datasets/mixing-station-io-2
+  revision: main
+
+policy:
+  type: pi05
+  pretrained_path: lerobot/pi05_base
+  dtype: bfloat16
+  gradient_checkpointing: true
+  freeze_vision_encoder: false
+  train_expert_only: false
+  device: cuda
+  push_to_hub: false
+
+batch_size: 4
+steps: 213480  # 20 epochs x 42,696 frames / batch_size 4
+save_freq: 50000
+num_workers: 8
+log_freq: 10
+
+trackio:
+  enable: true
+  project: mixing-station-io-2
+
+output_dir: ./outputs/pi05_mixing-station-io-2
+job_name: pi05_mixing-station-io-2
